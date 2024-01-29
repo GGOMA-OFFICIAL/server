@@ -1,5 +1,6 @@
 package ggoma.ggoma.jwt;
 
+import ggoma.ggoma.dto.LoginRequestDTO;
 import ggoma.ggoma.entity.UserEntity;
 import ggoma.ggoma.service.UserService;
 import jakarta.servlet.FilterChain;

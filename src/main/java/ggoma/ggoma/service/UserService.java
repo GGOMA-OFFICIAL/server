@@ -17,8 +17,20 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public void join(JoinRequestDTO joinRequestDTO){
+/*    public void join(JoinRequestDTO joinRequestDTO){
         userRepository.save(joinRequestDTO.toEntity());
+    }*/
+
+    public UserEntity login(LoginRequestDTO loginRequestDTO){
+        Optional<UserEntity> optionalUserEntity = userRepository.findByMemberNumber(loginRequestDTO.getMemberNumber());
+
+        if(optionalUserEntity.isEmpty()){
+            return null;
+        }
+
+        UserEntity userEntity = optionalUserEntity.get();
+
+        return userEntity;
     }
 
     //login 여부에 따른 return 값 코드 재확인 필요
@@ -28,7 +40,11 @@ public class UserService {
         Optional<UserEntity> optionalUserEntity = userRepository.findByMemberNumber(memberNumber);
 
         if(optionalUserEntity.isEmpty()){
-            return null;
+            UserEntity newUserEntity = new UserEntity();
+            newUserEntity.setMemberNumber(memberNumber);
+            userRepository.save(newUserEntity);
+
+            return newUserEntity;
         }
 
 
