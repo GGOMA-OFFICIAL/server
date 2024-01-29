@@ -7,11 +7,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 
 public class JwtTokenUtil {
-    public static String createToken(String loginId, String key, long expireTimeMs) {
+    public static String createToken(String snsId, String key, long expireTimeMs) {
         // Claim = Jwt Token에 들어갈 정보
         // Claim에 loginId를 넣어 줌으로써 나중에 loginId를 꺼낼 수 있음
         Claims claims = Jwts.claims();
-        claims.put("loginId", loginId);
+        claims.put("snsId", snsId);
 
         //Jwt 토큰 생성
         return Jwts.builder()
@@ -23,8 +23,8 @@ public class JwtTokenUtil {
     }
 
     // Claims에서 loginId 꺼내기
-    public static String getLoginId(String token, String secretKey) {
-        return extractClaims(token, secretKey).get("loginId").toString();
+    public static String getSnsId(String token, String secretKey) {
+        return extractClaims(token, secretKey).get("snsId").toString();
     }
 
     // 밝급된 Token이 만료 시간이 지났는지 체크

@@ -21,13 +21,17 @@ public class UserService {
         userRepository.save(joinRequestDTO.toEntity());
     }
 
-    public boolean login(LoginRequestDTO loginRequestDTO){
-        Optional<UserEntity> optionalUserEntity = userRepository.findByMemberNumber(loginRequestDTO.getMemberNumber());
+    //login 여부에 따른 return 값 코드 재확인 필요
+    public UserEntity getLoginUserByMemberNumber(String memberNumber){
+//        if(memberNumber == null) return null;
+
+        Optional<UserEntity> optionalUserEntity = userRepository.findByMemberNumber(memberNumber);
 
         if(optionalUserEntity.isEmpty()){
-            return false;
+            return null;
         }
 
-        return true;
+
+        return optionalUserEntity.get();
     }
 }
