@@ -15,7 +15,7 @@ public class JoinRequestDTO {
     private String kNickname;
     private String memberNumber;
 
-    private UserEntity toEntity(){
+    public UserEntity toEntity(){
         return UserEntity.builder()
                 .kNickname(this.kNickname)
                 .memberNumber(this.memberNumber)
