@@ -1,12 +1,12 @@
 package ggoma.ggoma.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @ToString
 @Table(name = "User")
