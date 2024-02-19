@@ -1,20 +1,19 @@
 package ggoma.ggoma.dto;
 
 /*import lombok.Builder;*/
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@Data
 public class LoginRequestDTO {
 
-    private String kNickname;
+    private String nickName;
     private String memberNumber;
 
 
-/*    @Builder
+/*        @Builder
     public LoginRequestDTO(String kNickname, String memberNumber){
         this.kNickname = kNickname;
         this.memberNumber = memberNumber;

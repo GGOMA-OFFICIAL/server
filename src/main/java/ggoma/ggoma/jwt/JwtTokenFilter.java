@@ -1,3 +1,4 @@
+/*
 package ggoma.ggoma.jwt;
 
 import ggoma.ggoma.dto.LoginRequestDTO;
@@ -65,3 +66,4 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 }
+*/

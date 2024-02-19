@@ -1,3 +1,4 @@
+/*
 package ggoma.ggoma.dto;
 
 import ggoma.ggoma.entity.UserEntity;
@@ -22,3 +23,4 @@ public class JoinRequestDTO {
                 .build();
     }
 }
+*/

@@ -1,6 +1,17 @@
 package ggoma.ggoma;
 
-import ggoma.ggoma.jwt.JwtTokenFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+
+
+/*
+
+//import ggoma.ggoma.jwt.JwtTokenFilter;
 import ggoma.ggoma.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +35,7 @@ public class SecurityConfig {
 //    private static String secretKey = "${JWT_SECRET}";
     private static String secretKey = "e3a3f9aa7bfd221d40aab4e1112d3a00e70b76c02bf756d1b88225c573535e0a";
 
+*/
 /*    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
@@ -32,13 +44,16 @@ public class SecurityConfig {
                 .sessionManagement(withDefaults())
                 .addFilterBefore(new JwtTokenFilter(userService, secretKey), UsernamePasswordAuthenticationFilter.class)
                 .build();
-    }*/
+    }*//*
+
+*/
 /*    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf(withDefaults());
         http.authorizeHttpRequests().anyRequest().permitAll();
         return http.build();
-    }*/
+    }*//*
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests.anyRequest().authenticated());
@@ -46,6 +61,25 @@ public class SecurityConfig {
         http.formLogin(withDefaults());
         http.httpBasic(withDefaults());
         http.csrf(AbstractHttpConfigurer::disable);
+
+        return http.build();
+    }
+}
+*/
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    @Bean
+    protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement((sessionManagement) ->
+                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+                .authorizeHttpRequests((authorizeRequests) ->
+                        authorizeRequests.anyRequest().permitAll()
+                );
 
         return http.build();
     }

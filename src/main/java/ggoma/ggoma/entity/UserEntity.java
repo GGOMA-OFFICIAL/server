@@ -19,8 +19,9 @@ public class UserEntity extends BaseEntity{
     private Long snsId;
 
     @Column(name = "k_nickname")
-    private String kNickname;
+    private String nickName;
 
     @Column(name = "member_number")
     private String memberNumber;
+
 }

@@ -1,3 +1,4 @@
+/*
 package ggoma.ggoma.jwt;
 
 import io.jsonwebtoken.Claims;
@@ -39,3 +40,4 @@ public class JwtTokenUtil {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
     }
 }
+*/
